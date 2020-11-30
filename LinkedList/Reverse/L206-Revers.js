@@ -9,15 +9,11 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-//顺序遍历
-import { singleListNode } from "./ListNode";
-let head = new singleListNode(1, null);
-console.log(head);
-
+//loop
 var reverseList = function (head) {
-  if (head) return null;
-  let pre = null,
-    cur = head;
+  if (!head) return head;
+  let pre = null;
+  let cur = head;
   while (cur) {
     let next = cur.next;
     cur.next = pre;
@@ -26,5 +22,13 @@ var reverseList = function (head) {
   }
   return pre;
 };
-//递归
-var reverseList = function (head) {};
+//recursive
+var reverseList = function (head) {
+  let reverse = (pre, cur) => {
+    if (!cur) return pre;
+    let next = cur.next;
+    cur.next = pre;
+    return reverse(cur, next);
+  };
+  return reverse(null, head);
+};
