@@ -4,8 +4,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.quickSuggestions": {
-    "other": false,
-    "comments": false,
-    "strings": false
+    "other": true,
+    "comments": true,
+    "strings": true
   }
 }

@@ -10,6 +10,10 @@
  * @return {ListNode}
  */
 //顺序遍历
+import { singleListNode } from "./ListNode";
+let head = new singleListNode(1, null);
+console.log(head);
+
 var reverseList = function (head) {
   if (head) return null;
   let pre = null,
