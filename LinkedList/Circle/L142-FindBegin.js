@@ -21,4 +21,21 @@ var detectCycle = function (head) {
   return null;
 };
 //slow-quick pointer
-var detectCycle = function (head) {};
+//beautiful math!
+var detectCycle = function (head) {
+  let s = head,
+    q = head;
+  while (q && q.next) {
+    s = s.next;
+    q = q.next.next;
+    if (q === s) {
+      let p = head;
+      while (p !== s) {
+        p = p.next;
+        s = s.next;
+      }
+      return p;
+    }
+  }
+  return null;
+};
