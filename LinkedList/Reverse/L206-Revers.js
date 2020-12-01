@@ -22,7 +22,7 @@ var reverseList = function (head) {
   }
   return pre;
 };
-//recursive
+//recursive forward
 var reverseList = function (head) {
   let reverse = (pre, cur) => {
     if (!cur) return pre;
@@ -31,4 +31,12 @@ var reverseList = function (head) {
     return reverse(cur, next);
   };
   return reverse(null, head);
+};
+//recursive backward
+var reverseList = function (head) {
+  if (!head || !head.next) return head;
+  let res = reverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+  return res;
 };
