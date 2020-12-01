@@ -28,8 +28,10 @@ var reorderList = function (head) {
   };
   reorder(head);
 };
-//mid -> reverse -> reorder
-//reverse的变形
+/**
+ *mid -> reverse -> reorder
+ *reverse的变形
+ */
 var reorderList = function (head) {
   if (!head || !head.next) return;
   //reverse from cur and return the reversed head

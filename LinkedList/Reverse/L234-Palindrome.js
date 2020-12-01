@@ -21,7 +21,7 @@ var isPalindrome = function (head) {
   };
   let slow = (fast = new ListNode());
   slow.next = head;
-  //find mide node;
+  //find mid node;
   while (fast && fast.next) {
     slow = slow.next;
     fast = fast.next.next;
