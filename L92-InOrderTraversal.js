@@ -23,8 +23,7 @@ var inorderTraversal = function (root) {
   return ans;
 };
 //loop
-//从根到做节点入栈，依次弹出,每一个node即是left,也是root
-//模拟recursive的过程
+//左节点全部入栈，出栈(此时已经访问左根)，处理右节点
 var preorderTraversal = function (root) {
   let ans = [];
   let s = [];

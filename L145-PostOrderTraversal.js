@@ -22,20 +22,28 @@ var postorderTraversal = function (root) {
   return ans;
 };
 //loop
-//TODO
+//两步:
+//左节点全部入栈
+//检查是否有(非空&&未访问)右节点
 var postorderTraversal = function (root) {
+  if (!root) return [];
   let ans = [];
   let s = [];
+  let set = new Set();
   let p = root;
-  while (s.length) {
-    while (p.left) {
+  while (s.length || p) {
+    while (p) {
       s.push(p);
       p = p.left;
     }
-    while (p.right) {
-      s.push(p);
-      p = p.right;
+    let node = s[s.length - 1];
+    if (node.right && !set.has(node.right)) {
+      p = node.right;
+      set.add(p);
+    } else {
+      ans.push(node.val);
+      s.pop();
     }
-    ans.push(p.val);
   }
+  return ans;
 };

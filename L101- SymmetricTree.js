@@ -26,4 +26,18 @@ var isSymmetric = function (root) {
   return dfs(root.left, root.right);
 };
 //loop
-var isSymmetric = function (root) {};
+var isSymmetric = function (root) {
+  if (!root) return true;
+  let s = [root.left, root.right];
+  while (s.length) {
+    let node1 = s.shift();
+    let node2 = s.shift();
+    if (!node1 && !node2) continue;
+    if (!node1 || !node2 || node1.val != node2.val) return false;
+    s.push(node1.left);
+    s.push(node2.right);
+    s.push(node1.right);
+    s.push(node2.left);
+  }
+  return true;
+};

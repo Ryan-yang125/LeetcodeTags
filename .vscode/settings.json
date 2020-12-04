@@ -1,11 +1,16 @@
 {
+  //设置prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  //关闭提示
   "editor.quickSuggestions": {
     "other": false,
     "comments": false,
     "strings": false
-  }
+  },
+  //设置空格为2
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2
 }
