@@ -27,5 +27,5 @@ var isValidBST = function (root) {
   };
   return dfs(root);
 };
-//
+//TODO add
 var isValidBST = function (root) {};

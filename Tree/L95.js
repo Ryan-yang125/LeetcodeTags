@@ -11,28 +11,28 @@
  * @return {TreeNode[]}
  */
 var generateTrees = function (n) {
-  let back = (s, e) => {
-    if (s == e) {
-      return new TreeNode(s);
+  let dfs = (start, end) => {
+    let list = [];
+    if (start > end) {
+      list.push(null);
+      return list;
+    } else if (start == end) {
+      list.push(new TreeNode(start));
+      return list;
     }
-    if (s > e) {
-      return null;
+    let left = [],
+      right = [];
+    for (let i = start; i <= end; i++) {
+      left = dfs(start, i - 1);
+      right = dfs(i + 1, end);
+      for (let leftNode of left)
+        for (let rightNode of right) {
+          let root = new TreeNode(i, leftNode, rightNode);
+          list.push(root);
+        }
     }
-    for (let i = s; i <= e; i++) {
-      let node = new TreeNode(i);
-      node.left = back(s, i - 1);
-      node.right = back(i + 1, e);
-      console.log(node.val);
-      return node;
-    }
+    return list;
   };
   if (!n) return [];
-  let ans = [];
-  for (let i = 1; i <= n; i++) {
-    let node = new TreeNode(i);
-    ans.push(node);
-    node.left = back(1, i - 1);
-    node.right = back(i + 1, n);
-  }
-  return ans;
+  return dfs(1, n);
 };
