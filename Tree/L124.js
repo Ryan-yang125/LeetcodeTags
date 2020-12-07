@@ -15,17 +15,18 @@
 var maxPathSum = function (root) {
   let dfs = (node) => {
     if (!node) return 0;
-    let left = Math.max(dfs(node.left), 0);
-    let right = Math.max(dfs(node.right), 0);
-    //截止到目前为止maxPathSum
-    let cur = left + right + node.val;
-    if (cur > max) max = cur;
-    return Math.max(left + node.val, right + node.val);
+    let left = dfs(node.left);
+    let right = dfs(node.right);
+    let rootSum = Math.max(left, right) + node.val;
+    left = left > 0 ? left : 0;
+    right = right > 0 ? right : 0;
+    let childSum = left + right + node.val;
+    if (childSum > ans) ans = childSum;
+    return rootSum > 0 ? rootSum : 0;
   };
-  let max = Number.MIN_SAFE_INTEGER;
-  if (!root) return 0;
+  let ans = Number.MIN_SAFE_INTEGER;
   dfs(root);
-  return max;
+  return ans;
 };
 //loop
 //和后序也很像，自底向上
