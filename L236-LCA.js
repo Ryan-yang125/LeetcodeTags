@@ -18,6 +18,28 @@ var lowestCommonAncestor = function (root, p, q) {
   let right = lowestCommonAncestor(root.right, p, q);
   return !left ? right : !right ? left : root;
 };
+//dfs recursive2
+//find path
+var lowestCommonAncestor = function (root, p, q) {
+  let dfs = (node) => {
+    if (!node) return;
+    path.push(node);
+    if (node === p || node === q) {
+      ans.push([...path]);
+    }
+    dfs(node.left);
+    dfs(node.right);
+    path.pop();
+  };
+  let path = [];
+  let ans = [];
+  dfs(root);
+  let [path1, path2] = ans;
+  for (let i = path1.length - 1; i >= 0; i--)
+    for (let j = path2.length - 1; j >= 0; j--) {
+      if (path1[i] === path2[j]) return path1[i];
+    }
+};
 //loop and add father node manully
 var lowestCommonAncestor = function (root, p, q) {
   let s = [root];
